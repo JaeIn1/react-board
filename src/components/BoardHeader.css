@@ -1,0 +1,11 @@
+.header-parent {
+  background-color: #3f50b5;
+  height: 80px;
+  font-size: 30px;
+  color: white;
+  text-align: start;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding-left: 30px;
+}
