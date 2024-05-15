@@ -5,7 +5,31 @@
   color: white;
   text-align: start;
   display: flex;
-  justify-content: start;
+  justify-content: space-between;
   align-items: center;
-  padding-left: 30px;
+}
+.header_title {
+  margin-left: 30px;
+}
+.header_icon_div {
+  margin-right: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header_icon {
+  font-size: 2rem !important;
+}
+.alarm_icon_div {
+  position: relative;
+  display: flex;
+}
+.alarm_icon_color {
+  position: absolute;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-color: tomato;
+  border-radius: 50%;
+  right: 2px;
 }

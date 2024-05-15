@@ -1,6 +1,8 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
+import AddModalItem from "./AddModalItem";
+import "./AddModal.css";
 
 const style = {
   position: "absolute",
@@ -8,7 +10,8 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   backgroundColor: "#ffffff",
-  width: 400,
+  width: 500,
+  height: 600,
   p: 4,
   backdropFilter: "blur(0px)", // 주변 배경 투명화
   borderRadius: "10px",
@@ -25,8 +28,7 @@ export default function AddModal(props) {
       BackdropProps={{ invisible: true }}
     >
       <Box sx={style}>
-        <div>Add Item</div>
-        <div>{/* 내용 추가 */}</div>
+        <AddModalItem />
       </Box>
     </Modal>
   );

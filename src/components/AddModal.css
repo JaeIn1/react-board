@@ -1,0 +1,17 @@
+.modal_header {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+.modal_item_id {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.modal_item_input {
+  width: 90%;
+  padding: 10px 20px;
+  background-color: white;
+  border: none;
+  border-bottom: 2px solid #3e50b5;
+}
