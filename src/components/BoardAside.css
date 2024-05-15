@@ -2,4 +2,31 @@
   width: 370px;
   height: 100%;
   background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: flex-start;
+}
+.icon_div_parent {
+  margin-top: 70px;
+  margin-left: 50px;
+}
+.icon_div {
+  color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.icon_div:hover {
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.7);
+}
+.icon_div span {
+  padding-top: 5px;
+  margin-left: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.board_icon {
+  font-size: 2rem !important;
 }
