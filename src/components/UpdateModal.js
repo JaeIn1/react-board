@@ -5,11 +5,11 @@ import { v4 as uuidv4 } from "uuid";
 import "./AddModal.css";
 import { useState } from "react";
 
-export default function AddModal(props) {
-  const [id, setId] = useState("");
-  const [title, setTitle] = useState("");
-  const [body, setBody] = useState("");
-  const [userId, setUserId] = useState("");
+export default function UpdateModal(props) {
+  const [id, setId] = useState(props.item.id);
+  const [title, setTitle] = useState(props.item.title);
+  const [body, setBody] = useState(props.item.body);
+  const [userId, setUserId] = useState(props.item.userId);
 
   const onChangeId = (e) => {
     setId(e.target.value);
@@ -23,22 +23,11 @@ export default function AddModal(props) {
   const onChangeUserId = (e) => {
     setUserId(e.target.value);
   };
-
-  const isFormValid = () => {
-    return id && title && body && userId;
-  };
-
-  const handleSaveChanges = () => {
-    if (isFormValid()) {
-      props.handleOk({ id, title, body, userId, uuid: uuidv4() });
-    }
-  };
-
   return (
     <>
       <Modal show={props.show} onHide={props.handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Add Item</Modal.Title>
+          <Modal.Title>Update Item</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
@@ -47,9 +36,9 @@ export default function AddModal(props) {
               <Form.Control
                 type="text"
                 placeholder="Please enter your ID"
-                onChange={onChangeId}
                 value={id}
-                isInvalid={!id}
+                onChange={onChangeId}
+                autoFocus
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -57,8 +46,8 @@ export default function AddModal(props) {
               <Form.Control
                 type="text"
                 placeholder="Please enter your Title"
+                value={title}
                 onChange={onChangeTitle}
-                isInvalid={!title}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -66,8 +55,8 @@ export default function AddModal(props) {
               <Form.Control
                 type="text"
                 placeholder="Please enter your User Id"
+                value={userId}
                 onChange={onChangeUserId}
-                isInvalid={!userId}
               />
             </Form.Group>
             <Form.Group
@@ -79,7 +68,7 @@ export default function AddModal(props) {
                 as="textarea"
                 rows={3}
                 onChange={onChangeContent}
-                isInvalid={!body}
+                value={body}
               />
             </Form.Group>
           </Form>
@@ -90,8 +79,13 @@ export default function AddModal(props) {
           </Button>
           <Button
             variant="primary"
-            onClick={handleSaveChanges} // 수정된 부분
-            disabled={!isFormValid()} // 모든 필드가 입력되었을 때만 버튼 활성화
+            onClick={props.handleOk({
+              id,
+              title,
+              body,
+              userId,
+              uuid: props.item.id,
+            })}
           >
             Save Changes
           </Button>

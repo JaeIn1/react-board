@@ -9,35 +9,45 @@ import AddModal from "./AddModal";
 const BoardBody = (props) => {
   const [boardList, setBoardList] = useState([]);
   const [openModal, setOpenModal] = useState(false);
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const handleOk = (data) => () => {
+    setBoardList((prev) => [...prev, data]);
+    setShow(false);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const resp = await axios.get(
-          "https://jsonplaceholder.typicode.com/todos"
+          "https://jsonplaceholder.typicode.com/posts"
         );
-        setBoardList(resp.data);
+        const newArr = resp.data.map((item) => ({
+          ...item,
+          uuid: uuidv4(),
+        }));
+        setBoardList(newArr);
+        console.log(newArr);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
     fetchData();
   }, []);
-
   const onClickAddBtn = () => {
     setOpenModal(true);
-    setOpen(true);
+    setShow(true);
   };
   return (
     <>
       {openModal ? (
         <AddModal
-          open={open}
-          handleOpen={handleOpen}
+          show={show}
+          handleOpen={handleShow}
           handleClose={handleClose}
+          handleOk={handleOk}
         />
       ) : (
         ""
@@ -48,12 +58,19 @@ const BoardBody = (props) => {
           <div className="boardItem_div_header">
             <span>아이디</span>
             <span>제목</span>
+            <span>내용</span>
             <span>사용자</span>
             <span>설정</span>
           </div>
           <ul className="boardItem_ul">
             {boardList.map((e, i) => (
-              <BoardListItem item={e} id={uuidv4()} key={uuidv4()} />
+              <BoardListItem
+                item={e}
+                key={uuidv4()}
+                id={e.uuid}
+                setBoardList={setBoardList}
+                boardList={boardList}
+              />
             ))}
           </ul>
           <span onClick={onClickAddBtn}>

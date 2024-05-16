@@ -8,19 +8,29 @@
 
 .board_list_item span:nth-child(1) {
   text-align: center;
-  width: 10%;
+  width: 5%;
 }
 .board_list_item span:nth-child(2) {
   text-align: center;
-  width: 60%;
+  width: 30%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .board_list_item span:nth-child(3) {
   text-align: center;
-  width: 15%;
+  width: 30%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .board_list_item span:nth-child(4) {
   text-align: center;
-  width: 15%;
+  width: 5%;
+}
+.board_list_item span:nth-child(5) {
+  text-align: center;
+  width: 20%;
 }
 .setting_icon {
   color: #3e50b5;
